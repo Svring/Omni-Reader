@@ -28,6 +28,10 @@ struct WholeView: View {
         .onAppear{
             do {
                 try modelContext.delete(model: PromptInfo.self)
+                for path in Bundle.main.paths(forResourcesOfType: nil, inDirectory: nil) {
+                    print(path)
+                }
+
             } catch {
                 print("Failed to clear database.")
             }

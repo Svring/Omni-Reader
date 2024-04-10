@@ -5,15 +5,16 @@
 //  Created by Monophotic on 2024/4/3.
 //
 
-import SwiftUI
 import PythonKit
+import SwiftUI
 
 struct CenterView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var imageUrl: URL?
     @Binding var imageInfo: PromptInfo?
     @State private var isHovered = false
-    
+    @State private var showSheetState = false
+
     var body: some View {
         ZStack {
             if let image = imageInfo {
@@ -41,6 +42,9 @@ struct CenterView: View {
         .onChange(of: imageUrl) {
             parseImage(url: imageUrl!)
         }
+        .onChange(of: imageInfo) {
+            showSheetState = imageInfo?.generator == "ComfyUI"
+        }
         .onDrop(of: [.fileURL], isTargeted: nil, perform: { providers, _ in
             handleDrop(providers: providers)
         })
@@ -51,8 +55,17 @@ struct CenterView: View {
             NSCursor.pointingHand.set()
             isHovered = hovering
         })
+        .sheet(isPresented: $showSheetState, content: {
+            VStack {
+                Button("Dismiss") {
+                    showSheetState = false
+                }
+                WebView()
+                    .frame(width: 1024, height: 720)
+            }
+        })
     }
-    
+
     func openImagePicker() {
         let panel = NSOpenPanel()
         panel.allowedContentTypes = [.jpeg, .png, .jpeg]
@@ -103,4 +116,3 @@ struct CenterView: View {
         }
     }
 }
-
