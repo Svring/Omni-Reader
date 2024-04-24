@@ -1,6 +1,6 @@
 # Omni-Reader
 
-![Example Image](Screenshot 2024-04-24 at 21.23.38.png)
+![Screenshot 2024-04-24 at 21.23.38.png](https://github.com/Svring/Omni-Reader/blob/27470ffa4e98b5e2f31543984df382f4319091cd/example.png)
 
 AI-generated image information/prompt reader, support Automatic1111, ComfyUI and NovelAI.
 
