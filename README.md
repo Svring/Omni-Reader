@@ -1,5 +1,7 @@
 # Omni-Reader
 
+![Example Image](Screenshot 2024-04-24 at 21.23.38.png)
+
 AI-generated image information/prompt reader, support Automatic1111, ComfyUI and NovelAI.
 
 AI图片信息读取器，支持对Automatic1111, ComfyUI和NovelAI图片的解析。
